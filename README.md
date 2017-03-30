@@ -1,5 +1,5 @@
 
-#Using a service worker for serving images from the user's local machine
+# Using a service worker for serving images from the user's local machine
 
 Sometimes it is desirable to display in a browser images that the user has selected from their local file system. For example, when you want to give them a preview of an image before giving them the option to upload to the server.
   A common technique for doing this is to convert the image a data url and set this as the value of an image element's src attribute. The draw back of this technique is that you have to use a url that is different from that which you will probably use on a normal page to request the image once it is on your server. Imagine you are creating a WYSIWYG editor for a CMS which allows the user to write HTML and also has a pane which gives a preview of what it will look like. There are two possible solutions: Firstly, you could use the aforementioned technique. This would mean that you have to do some work to change the image urls at some point. Possible, but a bit hacky perhaps. Alternatively you could upload the images to the server straight away. But if the user then cancels the edit you are left with images on the server that you need to get rid of somehow. Again possible, but messy. Is their a better way?
