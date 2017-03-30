@@ -12,7 +12,7 @@ Neither of these solutions are optimal. What we would REALLY like is to be able 
 
 Not anymore. Service workers make the impossible  doable. Because Service worker allow us to intercept fetch requests, we can serve up whatever we want to. We can therefore serve up our images that are stored on the client even though to  the browser it appears as if they are coming from the server.
 
-I have created a demo editor app which shows this in action.
+I have created a [demo app](https://richardinho.github.io/wysiwyg-html-editor/) which shows this in action.
 
 The editor is split into two panes. The left one is for inputting raw html. The right hand pane displays an html preview. If you start to type an image tag ('<img ') into the editor pane a pop up will appear offering you to pick an image from your file system. It also gives fields for filename and alt text. Assuming you pick an image and click the 'done' button, the editor will automatically complete the image element with the correct values for src and alt attributes dependent on your input. The display pane will update including the image.This is the image that has been served from the indexedDB database by the service worker. In a production app, the user would then be able to submit the entire form to the server and obviously you would have to make sure the image was stored in the correct folder matching the url in our tag. This demo app doesn't do this but it would be fairly trivial to instruct a back end developer to write this for you!
 
