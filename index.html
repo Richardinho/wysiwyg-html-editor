@@ -34,6 +34,13 @@
         <textarea></textarea>
         <div id="display-pane" class="display-pane"></div>
     </div>
+    <p>
+        This is a prototype of a WYSIWYG editor that allows the user to write html and see a preview of it in the display pane. A particular feature is that the user can construct image tags with urls that point to a resource on a server and the display pane will show the image - even before the image has been uploaded!
+        </p>
+    <p>
+        This works via the magic of service workers. When the user picks an image from their local file system using the file picker, this image is stored in and indexedDB database. When the image tag is constructed, the browser makes a request for it, but this request is intercepted by the service worker which serves the image from the database.
+
+    </p>
     <script>
 
         if ('serviceWorker' in navigator) {
