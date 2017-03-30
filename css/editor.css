@@ -7,6 +7,10 @@ label {
     margin-bottom : 12px;
 }
 
+p {
+    margin : 12px;
+}
+
 h1 {
     padding : 12px;
     font-weight : bold;
