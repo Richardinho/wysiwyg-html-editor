@@ -1,0 +1,94 @@
+body {
+    font-family : helvetica;
+}
+
+label {
+    display : block;
+    margin-bottom : 12px;
+}
+
+.editor {
+    width : 1000px;
+
+    margin : auto;
+    border : solid 10px grey;
+    display : flex;
+    flex-wrap : none;
+}
+.editor > textarea,
+.editor > .display-pane {
+    min-height : 400px;
+    width : 50%;
+}
+.editor > textarea {
+    outline : none;
+    border : none;
+    background : #ddd;
+    resize : vertical;
+}
+
+.display-pane {
+    padding : 12px;
+}
+
+
+.overlay {
+
+    position : fixed;
+    left : 0;
+    display : none;
+    top : 0;
+    bottom : 0;
+    right : 0;
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: ease;
+    transition-delay: .2s;
+    background : rgba(33, 171, 243, 0.5);
+    opacity : 0;
+
+}
+.overlay.show {
+    opacity : 1;
+}
+
+.modals {
+
+    position : fixed;
+    top : 0; left : 0; bottom : 0; right : 0;
+    display : flex;
+}
+
+#file-picker {
+    margin : auto;
+    display : none;
+    padding : 12px;
+    background : white;
+    transition : 1s ease all;
+    transform : translateY(-200px);
+    opacity : 0;
+    width : 400px;
+    pointer-events : auto;
+}
+#file-picker.show {
+    opacity : 1;
+    transform : translateY(0);
+}
+
+#file-picker form {
+    padding : 12px 0;
+}
+
+#file-picker .file-picker-thumbnail {
+    width : 100px;
+    float : right;
+    border : dashed 3px grey;
+    min-height : 100px;
+}
+
+.modals  {
+    pointer-events : none;
+}
+img {
+    max-width : 60%;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/editor.css" rel="stylesheet">
+    <link href="css/display-pane.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="modals">
+        <div id="file-picker">
+            <h2>Would you like to upload an image?</h2>
+            <img id="thumbnail" class="file-picker-thumbnail">
+            <form id="form">
+                <label>
+                    <input id="file-input" type="file">
+                </label>
+                <label>filename:
+                    <input name="fileName" id="name-input" type="text">
+                </label>
+                <label>alt text:
+                    <input name="altText" id="alt-text-input" type="text">
+                </label>
+            </form>
+            <button data-command="close-file-picker">close</button>
+
+        </div>
+    </div>
+    <div id="editor-pane" class="editor">
+        <textarea></textarea>
+        <div id="display-pane" class="display-pane"></div>
+    </div>
+    <script>
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js', { scope : '/'})
+            .then(function(reg) {
+                // registration worked
+                console.log('Registration succeeded. Scope is ' + reg.scope);
+            }).catch(function(error) {
+                // registration failed
+                console.log('Registration failed with ' + error);
+            });
+        }
+
+    </script>
+    <script src="js/editor.js"></script>
+    <script src="js/indexed-db-service.js"></script>
+    <script src="js/file-picker.js"></script>
+    <script src="js/overlay.js"></script>
+    <script src="js/main.js"></script>
+
+
+</body>
+</html>

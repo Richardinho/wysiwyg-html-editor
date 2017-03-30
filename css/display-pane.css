@@ -1,0 +1,32 @@
+.display-pane h1,
+.display-pane h2,
+.display-pane h3,
+.display-pane h4,
+.display-pane h5,
+.display-pane h6 {
+    font-weight : bold;
+    line-height : 1;
+    padding : 12px 0;
+}
+.display-pane h1 {
+    font-size : 30px;
+}
+.display-pane h2 {
+    font-size : 24px;
+}
+.display-pane h3 {
+    font-size : 20px;
+}
+.display-pane h4 {
+    font-size : 18px;
+}
+.display-pane h5 {
+    font-size : 16px;
+}
+.display-pane h6 {
+    font-size : 14px;
+}
+
+.display-pane p {
+    margin : 12px 0;
+}
