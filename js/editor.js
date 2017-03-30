@@ -12,7 +12,9 @@ class Editor {
 
             let text = event.target.value;
 
+
             if (text.substring(text.length - 5) == '<img ') {
+
                 this.createImageTag(text);
             } else {
                 this.displayPane.innerHTML = text;
@@ -23,6 +25,8 @@ class Editor {
 
     createImageTag(text) {
 
+        this.editorPane.disabled = true;
+
         this.filePicker.open().then((data) => {
 
             let url = `/img/${data.fileName}`;
@@ -30,6 +34,7 @@ class Editor {
                 text = text + ` src="${url}" alt="${data.altText}">`;
                 this.editorPane.value = text;
                 this.displayPane.innerHTML = text;
+                this.editorPane.disabled = false;
             })
 
         });
