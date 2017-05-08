@@ -1,19 +1,12 @@
+# WYSIWYG editor with Service Worker and IndexedDB
 
-# Using a service worker for serving images from the user's local machine
+A 'Whatyouseeiswhatyouget' editor which provides a preview of user created HTML markup including support for client side images.
 
-Service workers are a recent arrival on the web development scene having been added to browsers in the last couple of years. Much of the discussion around them has concerned their ability to cache resources for offline availability and handle push notifications but their usefulness goes well beyond this. A service worker is effectively a proxy server in the browser under the full control of the developer which means that he is now able to determine the responses to network requests. In this article I am going to look at one way of taking advantage of this capability.
-
-Sometimes it is desirable to display in a browser images that the user has selected from their local file system. For example, Imagine you are creating an HTML WYSIWYG  editor for a content management system and you want to create a preview  pane which shows the user what her page will look like in a browser.  For simple tags like header and paragraphs this is trivial to implement as raw html added to a preview pane is automatically converted to HTML by the browser. Images however present more of a challenge. Using an input tag of type 'file', a user can select an image from the local file system and using web apis this image object can be converted into a data uri which is then set as the value to an image element's src attribute. This will result in an image being displayed.
-
-The problem with this technique is that data urls are massive and severely bloat the html. If we want to load our images up to our server and serve them using normal urls we will have to do some work to convert the urls. Another solution would be to post the images to the server as soon as the user selects them. This will allow us to use the same urls in our preview html as we would when it is displayed in a normal page. However if this assumes that the user is not going to publish the edit. If they decide not to , we are left with useless images clogging up our server and we will need to find a way of cleaning them up.
-
-Neither of these solutions are optimal. What we would REALLY like is to be able to set the urls to where the images will be stored on the server and request these images from the server BEFORE they are there - Surely impossible!!
+### Technologies used
+* HTML5
+* IndexedDB
+* Service worker
 
 
-Not anymore. Service workers make the impossible  doable. Because Service worker allow us to intercept fetch requests, we can serve up whatever we want to. We can therefore serve up our images that are stored on the client even though to  the browser it appears as if they are coming from the server.
+[demonstration app](https://richardinho.github.io/wysiwyg-html-editor/)
 
-I have created a [demo app](https://richardinho.github.io/wysiwyg-html-editor/) which shows this in action.
-
-The editor is split into two panes. The left one is for inputting raw html. The right hand pane displays an html preview. If you start to type an image tag ('<img ') into the editor pane a pop up will appear offering you to pick an image from your file system. It also gives fields for filename and alt text. Assuming you pick an image and click the 'done' button, the editor will automatically complete the image element with the correct values for src and alt attributes dependent on your input. The display pane will update including the image.This is the image that has been served from the indexedDB database by the service worker. In a production app, the user would then be able to submit the entire form to the server and obviously you would have to make sure the image was stored in the correct folder matching the url in our tag. This demo app doesn't do this but it would be fairly trivial to instruct a back end developer to write this for you!
-
- Service workers are like proxy servers on the browser which allow the developer to intercept requests and handle them however they choose.  IndexedDB is an API which allows data to be stored and shared between the service worker and the main browser context. These APIs are tremendously powerful and provide opportunities to do things that were simply impossible a short while ago. The code for the example app is on Github. I welcome all comments and suggestions.
